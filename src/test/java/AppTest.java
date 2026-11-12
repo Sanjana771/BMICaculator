@@ -54,6 +54,6 @@ public class AppTest {
     // Test Case 5: Intentional failure
     @Test
     public void testIntentionalFailure() {
-        assertEquals("Normal weight", calc.getCategory(32.0));
+    	assertEquals("Obese", calc.getCategory(32.0));
     }
 }
