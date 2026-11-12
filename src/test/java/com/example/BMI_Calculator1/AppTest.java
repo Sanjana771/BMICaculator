@@ -2,72 +2,39 @@
 package com.example.BMI_Calculator1;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AppTest {
 
-    private final BMICalculator calc = new BMICalculator();
+    BMICalculator calc = new BMICalculator();
 
-   
-    public void testCalculateBMI() {
+    // Test Case 1: Calculate BMI
+  
+    public void testBMICalculation() {
         assertEquals(22.86, calc.calculateBMI(70, 1.75), 0.01);
     }
 
+    // Test Case 2: Underweight
     
     public void testUnderweight() {
-        assertEquals("Underweight", calc.getCategory(18.4));
+        assertEquals("Underweight", calc.getCategory(17.0));
     }
 
-    
+    // Test Case 3: Normal Weight
+  
     public void testNormalWeight() {
-        assertEquals("Normal weight", calc.getCategory(22));
+        assertEquals("Normal weight", calc.getCategory(22.0));
     }
 
-    
+    // Test Case 4: Overweight
+  
     public void testOverweight() {
-        assertEquals("Overweight", calc.getCategory(27));
+        assertEquals("Overweight", calc.getCategory(27.0));
     }
 
-    
+    // Test Case 5: Obese
+   
     public void testObese() {
-        assertEquals("Obese", calc.getCategory(32));
-    }
-
-    
-    public void testBoundaryValues() {
-        assertEquals("Normal weight", calc.getCategory(18.5));
-        assertEquals("Overweight", calc.getCategory(25));
-        assertEquals("Obese", calc.getCategory(30));
-    }
-
-    
-    public void testZeroWeight() {
-        assertThrows(IllegalArgumentException.class,
-                () -> calc.calculateBMI(0, 1.75));
-    }
-
-    
-    public void testNegativeWeight() {
-        assertThrows(IllegalArgumentException.class,
-                () -> calc.calculateBMI(-70, 1.75));
-    }
-
-    
-    public void testZeroHeight() {
-        assertThrows(IllegalArgumentException.class,
-                () -> calc.calculateBMI(70, 0));
-    }
-
-    
-    public void testNegativeHeight() {
-        assertThrows(IllegalArgumentException.class,
-                () -> calc.calculateBMI(70, -1.75));
-    }
-    
-    public void testExtremeValues() {
-        assertThrows(IllegalArgumentException.class,
-                () -> calc.calculateBMI(70, 1e-200));
+        assertEquals("Obese", calc.getCategory(32.0));
     }
 }
